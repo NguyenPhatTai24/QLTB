@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.00000047683716in" Culture="(Default)" PageNumberingStyle="Continue" Name="ReportPhieuThietBi" xmlns="http://schemas.telerik.com/reporting/2012/4.2">
+  <Style>
+    <Font Name="Arial Narrow" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ConnectionString="Data Source=DESKTOP-JVM8D5H\SQLEXPRESS;Initial Catalog=QLTB_Sys;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="select (ROW_NUMBER() OVER (ORDER BY ID_THIETBI))-1 as ID_TBNEW,ID_THIETBI,TEN_TB,A.ID_VITRI,B.VITRI,QRCODE FROM THIETBI A, VITRIDATTHIETBI B WHERE A.ID_VITRI=B.ID_VITRI" Name="sqlDataSource1" />
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.300039410591125in" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="3.40000089009603in" Height="0.300000031789144in" Left="2.30000019073486in" Top="0in" Value="DANH SÁCH PHIẾU THIẾT BỊ" Name="textBox1">
+          <Style>
+            <Font Name="Times New Roman" Size="18pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+    <DetailSection CanShrink="True" PageBreak="BeforeAndAfter" KeepTogether="True" Height="163px" Name="detailSection1" BookmarkId="">
+      <Style Visible="True" TextAlign="Center" VerticalAlign="Middle">
+        <Font Name="Times New Roman" />
+      </Style>
+      <Items>
+        <List DataSourceName="sqlDataSource1" Width="3.30208333333333in" Height="1.49996058146159in" Left="0.599999984105428in" Top="0.0999605655670166in" KeepTogether="False" Name="list1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <Panel Width="317px" Height="144px" Left="0in" Top="0in" CanShrink="True" KeepTogether="True" Name="panel1">
+                    <Style>
+                      <BorderStyle Default="None" />
+                      <Padding Left="2px" Right="2px" Top="2px" Bottom="2px" />
+                    </Style>
+                    <Items>
+                      <Panel Width="3.07912707328796in" Height="1.27908790111542in" Left="0.100000061094761in" Top="0.0999999046325684in" Name="panel2">
+                        <Style>
+                          <BorderStyle Default="Solid" />
+                        </Style>
+                        <Items>
+                          <TextBox Width="1.79988193511963in" Height="0.19999997317791in" Left="1.20007860660553in" Top="0.708333492279053in" Value="= Fields.TEN_TB" Name="textBox6">
+                            <Style TextAlign="Left" />
+                          </TextBox>
+                          <TextBox Width="2.10000038146973in" Height="0.19999997317791in" Left="0.193671464920044in" Top="0.500078678131104in" Value="= Parameters.ThoiGian.Value" Name="textBox2" />
+                          <TextBox Width="1.79988193511963in" Height="0.199999809265137in" Left="1.20007860660553in" Top="0.908412277698517in" Value="= Fields.VITRI" Name="textBox7">
+                            <Style TextAlign="Left" />
+                          </TextBox>
+                          <TextBox Width="2.30003929138184in" Height="0.199999645352364in" Left="0.00003933906555176in" Top="0.0586587600409985in" Value="= Parameters.TenDV.Value" Name="Tahoma">
+                            <Style VerticalAlign="Bottom">
+                              <Font Name="Times New Roman" Size="9pt" Bold="True" Italic="True" />
+                            </Style>
+                          </TextBox>
+                          <TextBox Width="1.10000038146973in" Height="0.199999645352364in" Left="0.0999995097517967in" Top="0.908412456512451in" Value="Nơi sử dụng :" Name="textBox5">
+                            <Style>
+                              <Font Name="Times New Roman" Size="12pt" Bold="True" />
+                            </Style>
+                          </TextBox>
+                          <TextBox Width="1in" Height="0.199999645352364in" Left="0.0999995097517967in" Top="0.708333492279053in" Value="Tên tài sản :" Name="textBox3">
+                            <Style>
+                              <Font Name="Times New Roman" Size="12pt" Bold="True" />
+                            </Style>
+                          </TextBox>
+                          <TextBox Width="2.10000014305115in" Height="0.199921131134033in" Left="0.193671464920044in" Top="0.300078719854355in" Value="PHIẾU KIỂM KÊ TÀI SẢN" Name="textBox4">
+                            <Style VerticalAlign="Bottom">
+                              <Font Name="Times New Roman" Size="12pt" Bold="True" />
+                            </Style>
+                          </TextBox>
+                          <Barcode Width="0.600000381469727in" Height="0.491666714350382in" Left="2.39996019999186in" Top="0.058658758799235in" Value="= Parameters.Text.Value" Stretch="True" Name="barcode1">
+                            <Encoder>
+                              <QRCodeEncoder />
+                            </Encoder>
+                          </Barcode>
+                        </Items>
+                      </Panel>
+                    </Items>
+                  </Panel>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="317px" />
+            </Columns>
+            <Rows>
+              <Row Height="144px" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping Expression="= Fields.ID_TBNEW/2" />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="ColumnGroup">
+              <Groupings>
+                <Grouping Expression="= Fields.ID_TBNEW%2" />
+              </Groupings>
+            </TableGroup>
+          </ColumnGroups>
+        </List>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.0520833333333334in" Name="pageFooterSection1" />
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.200000002980232in" Right="0.200000002980232in" Top="0.200000002980232in" Bottom="0.200000002980232in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <ReportParameters>
+    <ReportParameter Name="ThoiGian" />
+    <ReportParameter Name="TenDV" />
+    <ReportParameter Name="Text" AutoRefresh="True" />
+  </ReportParameters>
+</Report>
